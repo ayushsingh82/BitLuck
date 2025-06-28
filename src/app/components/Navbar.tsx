@@ -19,6 +19,7 @@ export default function Navbar() {
           <Link href="/stats" className="text-black hover:text-gray-700 transition-colors font-medium">
             stats
           </Link>
+         
           <ConnectWallet />
         </div>
       </div>

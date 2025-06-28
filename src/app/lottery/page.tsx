@@ -35,21 +35,21 @@ export default function LotteryPage() {
   const [participants, setParticipants] = useState<Participant[]>([
     {
       id: '1',
-      wallet: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      wallet: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
       depositAmount: 0.01,
       timestamp: '2024-01-15T14:30:00Z',
       status: 'confirmed'
     },
     {
       id: '2',
-      wallet: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      wallet: '0x8ba1f109551bD432803012645Hac136c772c3c7b',
       depositAmount: 0.01,
       timestamp: '2024-01-15T14:25:00Z',
       status: 'confirmed'
     },
     {
       id: '3',
-      wallet: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      wallet: '0x1234567890123456789012345678901234567890',
       depositAmount: 0.01,
       timestamp: '2024-01-15T14:20:00Z',
       status: 'pending'
@@ -57,14 +57,14 @@ export default function LotteryPage() {
   ]);
 
   const [statusFeed, setStatusFeed] = useState([
-    { id: 1, message: 'New deposit confirmed: 0.01 BTC', timestamp: '2 min ago', type: 'deposit' },
+    { id: 1, message: 'New deposit confirmed: 0.01 cBTC', timestamp: '2 min ago', type: 'deposit' },
     { id: 2, message: 'SPV proof verified for tx: abc123...', timestamp: '5 min ago', type: 'proof' },
     { id: 3, message: 'New participant joined round #42', timestamp: '8 min ago', type: 'join' },
     { id: 4, message: 'VRF request submitted for winner selection', timestamp: '15 min ago', type: 'vrf' }
   ]);
 
   const [vrfStatus, setVrfStatus] = useState<'idle' | 'requesting' | 'completed'>('idle');
-  const [depositAddress] = useState('bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh');
+  const [depositAddress] = useState('0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6');
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = async () => {
@@ -78,7 +78,7 @@ export default function LotteryPage() {
   };
 
   const shortenAddress = (address: string) => {
-    return `${address.slice(0, 8)}...${address.slice(-8)}`;
+    return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
 
   return (
@@ -104,11 +104,11 @@ export default function LotteryPage() {
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">Required Deposit:</span>
-                    <span className="font-bold text-black">{roundInfo.requiredDeposit} BTC</span>
+                    <span className="font-bold text-black">{roundInfo.requiredDeposit} cBTC</span>
                   </div>
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">Prize Pool:</span>
-                    <span className="font-bold text-green-600">{roundInfo.prizePool} BTC</span>
+                    <span className="font-bold text-green-600">{roundInfo.prizePool} cBTC</span>
                   </div>
                 </div>
                 <div className="space-y-4">
@@ -144,7 +144,7 @@ export default function LotteryPage() {
 
             {/* BTC Deposit Address */}
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-2xl font-bold text-black mb-6">⛓️ BTC Deposit Address</h2>
+              <h2 className="text-2xl font-bold text-black mb-6">⛓️ cBTC Deposit Address</h2>
               <div className="text-center">
                 <div className="bg-gray-50 p-4 rounded-lg mb-4 inline-block">
                   <QRCodeSVG value={depositAddress} size={200} />
@@ -161,7 +161,7 @@ export default function LotteryPage() {
                   </button>
                 </div>
                 <p className="text-sm text-gray-600">
-                  Send exactly {roundInfo.requiredDeposit} BTC to this address to enter the lottery
+                  Send exactly {roundInfo.requiredDeposit} cBTC to this address to enter the lottery
                 </p>
               </div>
             </div>
@@ -177,7 +177,7 @@ export default function LotteryPage() {
                       <span className="font-mono text-sm">{shortenAddress(participant.wallet)}</span>
                     </div>
                     <div className="text-right">
-                      <div className="font-bold">{participant.depositAmount} BTC</div>
+                      <div className="font-bold">{participant.depositAmount} cBTC</div>
                       <div className="text-xs text-gray-500">
                         {new Date(participant.timestamp).toLocaleTimeString()}
                       </div>

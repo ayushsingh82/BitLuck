@@ -30,7 +30,7 @@ export default function StatsPage() {
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([
     {
       id: '1',
-      wallet: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      wallet: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
       totalEntries: 15,
       totalWins: 2,
       totalWinnings: 1.85,
@@ -38,7 +38,7 @@ export default function StatsPage() {
     },
     {
       id: '2',
-      wallet: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      wallet: '0x8ba1f109551bD432803012645Hac136c772c3c7b',
       totalEntries: 12,
       totalWins: 1,
       totalWinnings: 0.95,
@@ -46,7 +46,7 @@ export default function StatsPage() {
     },
     {
       id: '3',
-      wallet: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      wallet: '0x1234567890123456789012345678901234567890',
       totalEntries: 10,
       totalWins: 1,
       totalWinnings: 0.72,
@@ -54,7 +54,7 @@ export default function StatsPage() {
     },
     {
       id: '4',
-      wallet: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      wallet: '0x9876543210987654321098765432109876543210',
       totalEntries: 8,
       totalWins: 0,
       totalWinnings: 0,
@@ -62,7 +62,7 @@ export default function StatsPage() {
     },
     {
       id: '5',
-      wallet: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      wallet: '0xabcdef1234567890abcdef1234567890abcdef12',
       totalEntries: 6,
       totalWins: 0,
       totalWinnings: 0,
@@ -90,11 +90,11 @@ export default function StatsPage() {
     totalBTC: 5.09,
     totalPlayers: 1250,
     totalRounds: 41,
-    avgParticipants: 82.3
+    avgParticipants: 82
   });
 
   const shortenAddress = (address: string) => {
-    return `${address.slice(0, 8)}...${address.slice(-8)}`;
+    return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
 
   const getRankIcon = (rank: number) => {
@@ -120,9 +120,9 @@ export default function StatsPage() {
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <div className="text-4xl mb-2">💰</div>
             <div className="text-3xl font-bold text-green-600 mb-2">
-              {totalStats.totalBTC} BTC
+              {totalStats.totalBTC} cBTC
             </div>
-            <div className="text-gray-600">Total BTC Deposited</div>
+            <div className="text-gray-600">Total cBTC Deposited</div>
           </div>
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <div className="text-4xl mb-2">👥</div>
@@ -167,7 +167,7 @@ export default function StatsPage() {
                   </div>
                   <div className="text-right">
                     <div className="font-bold text-green-600">
-                      {entry.totalWinnings} BTC
+                      {entry.totalWinnings} cBTC
                     </div>
                     <div className="text-sm text-gray-600">
                       Total winnings
@@ -199,7 +199,7 @@ export default function StatsPage() {
                   </div>
                   <div className="text-right">
                     <div className="font-bold text-green-600">
-                      {round.prizePool} BTC
+                      {round.prizePool} cBTC
                     </div>
                     <div className="text-sm text-gray-600">
                       Prize pool
@@ -217,25 +217,25 @@ export default function StatsPage() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="text-center p-4 bg-green-50 rounded-lg">
               <div className="text-2xl font-bold text-green-600 mb-2">
-                {treasuryData.totalDeposits} BTC
+                {treasuryData.totalDeposits} cBTC
               </div>
               <div className="text-gray-600">Total Deposits</div>
             </div>
             <div className="text-center p-4 bg-blue-50 rounded-lg">
               <div className="text-2xl font-bold text-blue-600 mb-2">
-                {treasuryData.totalPayouts} BTC
+                {treasuryData.totalPayouts} cBTC
               </div>
               <div className="text-gray-600">Total Payouts</div>
             </div>
             <div className="text-center p-4 bg-purple-50 rounded-lg">
               <div className="text-2xl font-bold text-purple-600 mb-2">
-                {treasuryData.feesCollected} BTC
+                {treasuryData.feesCollected} cBTC
               </div>
               <div className="text-gray-600">Fees Collected ({treasuryData.feePercentage}%)</div>
             </div>
             <div className="text-center p-4 bg-orange-50 rounded-lg">
               <div className="text-2xl font-bold text-orange-600 mb-2">
-                {treasuryData.currentBalance} BTC
+                {treasuryData.currentBalance} cBTC
               </div>
               <div className="text-gray-600">Current Balance</div>
             </div>
@@ -289,7 +289,7 @@ export default function StatsPage() {
           </div>
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <div className="text-3xl font-bold text-blue-600 mb-2">
-              {(totalStats.totalBTC / totalStats.totalRounds).toFixed(3)} BTC
+              {(totalStats.totalBTC / totalStats.totalRounds).toFixed(3)} cBTC
             </div>
             <div className="text-gray-600">Average Round Size</div>
           </div>

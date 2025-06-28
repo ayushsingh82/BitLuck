@@ -17,56 +17,56 @@ export default function WinnersPage() {
     {
       id: '1',
       roundNumber: 41,
-      walletAddress: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      walletAddress: '0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6',
       prizeAmount: 1.0,
       timestamp: '2024-01-15T10:30:00Z',
-      txHash: 'abc123def456ghi789jkl012mno345pqr678stu901vwx234yz',
+      txHash: '0xabc123def456ghi789jkl012mno345pqr678stu901vwx234yz',
       isRecent: true
     },
     {
       id: '2',
       roundNumber: 40,
-      walletAddress: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      walletAddress: '0x8ba1f109551bD432803012645Hac136c772c3c7b',
       prizeAmount: 0.85,
       timestamp: '2024-01-14T15:45:00Z',
-      txHash: 'def456ghi789jkl012mno345pqr678stu901vwx234yzabc123'
+      txHash: '0xdef456ghi789jkl012mno345pqr678stu901vwx234yzabc123'
     },
     {
       id: '3',
       roundNumber: 39,
-      walletAddress: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      walletAddress: '0x1234567890123456789012345678901234567890',
       prizeAmount: 0.72,
       timestamp: '2024-01-13T20:15:00Z',
-      txHash: 'ghi789jkl012mno345pqr678stu901vwx234yzabc123def456'
+      txHash: '0xghi789jkl012mno345pqr678stu901vwx234yzabc123def456'
     },
     {
       id: '4',
       roundNumber: 38,
-      walletAddress: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      walletAddress: '0x9876543210987654321098765432109876543210',
       prizeAmount: 0.95,
       timestamp: '2024-01-12T12:00:00Z',
-      txHash: 'jkl012mno345pqr678stu901vwx234yzabc123def456ghi789'
+      txHash: '0xjkl012mno345pqr678stu901vwx234yzabc123def456ghi789'
     },
     {
       id: '5',
       roundNumber: 37,
-      walletAddress: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      walletAddress: '0xabcdef1234567890abcdef1234567890abcdef12',
       prizeAmount: 0.68,
       timestamp: '2024-01-11T08:30:00Z',
-      txHash: 'mno345pqr678stu901vwx234yzabc123def456ghi789jkl012'
+      txHash: '0xmno345pqr678stu901vwx234yzabc123def456ghi789jkl012'
     },
     {
       id: '6',
       roundNumber: 36,
-      walletAddress: 'bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh',
+      walletAddress: '0xfedcba0987654321fedcba0987654321fedcba09',
       prizeAmount: 0.89,
       timestamp: '2024-01-10T16:20:00Z',
-      txHash: 'pqr678stu901vwx234yzabc123def456ghi789jkl012mno345'
+      txHash: '0xpqr678stu901vwx234yzabc123def456ghi789jkl012mno345'
     }
   ]);
 
   const shortenAddress = (address: string) => {
-    return `${address.slice(0, 8)}...${address.slice(-8)}`;
+    return `${address.slice(0, 6)}...${address.slice(-4)}`;
   };
 
   const shortenTxHash = (hash: string) => {
@@ -84,7 +84,7 @@ export default function WinnersPage() {
   };
 
   const openExplorer = (txHash: string) => {
-    window.open(`https://blockstream.info/tx/${txHash}`, '_blank');
+    window.open(`https://explorer.citrea.xyz/tx/${txHash}`, '_blank');
   };
 
   return (
@@ -102,7 +102,7 @@ export default function WinnersPage() {
             <div className="text-6xl mb-4">🎉</div>
             <h2 className="text-3xl font-bold mb-2">Latest Winner!</h2>
             <p className="text-xl mb-4">
-              Round #{winners.find(w => w.isRecent)?.roundNumber} • {winners.find(w => w.isRecent)?.prizeAmount} BTC
+              Round #{winners.find(w => w.isRecent)?.roundNumber} • {winners.find(w => w.isRecent)?.prizeAmount} cBTC
             </p>
             <p className="text-lg opacity-90">
               Congratulations to {shortenAddress(winners.find(w => w.isRecent)?.walletAddress || '')}!
@@ -153,7 +153,7 @@ export default function WinnersPage() {
                     </td>
                     <td className="px-6 py-4">
                       <span className="font-bold text-green-600 text-lg">
-                        {winner.prizeAmount} BTC
+                        {winner.prizeAmount} cBTC
                       </span>
                     </td>
                     <td className="px-6 py-4 text-sm text-gray-600">
@@ -197,13 +197,13 @@ export default function WinnersPage() {
           </div>
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <div className="text-3xl font-bold text-green-600 mb-2">
-              {winners.reduce((sum, winner) => sum + winner.prizeAmount, 0).toFixed(2)} BTC
+              {winners.reduce((sum, winner) => sum + winner.prizeAmount, 0).toFixed(2)} cBTC
             </div>
             <div className="text-gray-600">Total Prizes Paid</div>
           </div>
           <div className="bg-white rounded-lg shadow-lg p-6 text-center">
             <div className="text-3xl font-bold text-blue-600 mb-2">
-              {(winners.reduce((sum, winner) => sum + winner.prizeAmount, 0) / winners.length).toFixed(3)} BTC
+              {(winners.reduce((sum, winner) => sum + winner.prizeAmount, 0) / winners.length).toFixed(3)} cBTC
             </div>
             <div className="text-gray-600">Average Prize</div>
           </div>
@@ -223,7 +223,7 @@ export default function WinnersPage() {
               <h3 className="text-xl font-bold text-black mb-3">Biggest Winner</h3>
               <div className="space-y-2">
                 <p className="text-sm text-gray-600">Round #{Math.max(...winners.map(w => w.roundNumber))}</p>
-                <p className="font-bold text-lg">{Math.max(...winners.map(w => w.prizeAmount))} BTC</p>
+                <p className="font-bold text-lg">{Math.max(...winners.map(w => w.prizeAmount))} cBTC</p>
                 <p className="text-sm text-gray-600">
                   {shortenAddress(winners.find(w => w.prizeAmount === Math.max(...winners.map(w => w.prizeAmount)))?.walletAddress || '')}
                 </p>
@@ -233,7 +233,7 @@ export default function WinnersPage() {
               <h3 className="text-xl font-bold text-black mb-3">Most Recent</h3>
               <div className="space-y-2">
                 <p className="text-sm text-gray-600">Round #{winners[0]?.roundNumber}</p>
-                <p className="font-bold text-lg">{winners[0]?.prizeAmount} BTC</p>
+                <p className="font-bold text-lg">{winners[0]?.prizeAmount} cBTC</p>
                 <p className="text-sm text-gray-600">
                   {shortenAddress(winners[0]?.walletAddress || '')}
                 </p>
