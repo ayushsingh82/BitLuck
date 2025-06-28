@@ -11,13 +11,13 @@ export default function Navbar() {
         
         <div className="flex space-x-6 items-center">
           <Link href="/" className="text-black hover:text-gray-700 transition-colors font-medium">
-            Home
+            lottery
           </Link>
           <Link href="/how-it-works" className="text-black hover:text-gray-700 transition-colors font-medium">
-            How It Works
+            winners
           </Link>
           <Link href="/docs" className="text-black hover:text-gray-700 transition-colors font-medium">
-            Docs
+            stats
           </Link>
           <ConnectWallet />
         </div>
