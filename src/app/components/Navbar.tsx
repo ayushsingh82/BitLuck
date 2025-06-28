@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import ConnectWallet from './ConnectWallet';
 
 export default function Navbar() {
   return (
@@ -8,7 +9,7 @@ export default function Navbar() {
           BitLuck
         </Link>
         
-        <div className="flex space-x-6">
+        <div className="flex space-x-6 items-center">
           <Link href="/" className="text-black hover:text-gray-700 transition-colors font-medium">
             Home
           </Link>
@@ -18,9 +19,7 @@ export default function Navbar() {
           <Link href="/docs" className="text-black hover:text-gray-700 transition-colors font-medium">
             Docs
           </Link>
-          <button className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition-colors font-medium">
-            Connect Wallet
-          </button>
+          <ConnectWallet />
         </div>
       </div>
     </nav>
