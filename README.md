@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎲 BitLuck - Trustless Bitcoin Lottery on Citrea
 
-## Getting Started
+**BitLuck** is a decentralized, transparent, and fair lottery DApp built on the **Citrea Bitcoin rollup**. It leverages **Chainlink VRF** to ensure randomness in selecting one lucky winner from 100 participants, each depositing **0.01 cBTC**. One winner takes the entire pot — no middlemen, no manipulation.
 
-First, run the development server:
+---
+
+## 🌟 Features
+
+- 🎯 **Fixed Pool**: 100 users per round, each contributing 0.01 cBTC
+- 🔐 **Trustless Execution**: Fully automated smart contract logic
+- 🧠 **Verifiable Randomness**: Winner selected using Chainlink VRF
+- 🌐 **Bitcoin-Native**: Runs entirely on Citrea using native Bitcoin-backed assets
+- 📈 **Fair & Transparent**: On-chain, auditable lottery rounds
+
+---
+
+## 💼 Use Case
+
+BitLuck provides a fun, simple, and low-risk way for Bitcoin holders to engage with on-chain activity. It also helps bootstrap **cBTC liquidity on Citrea** and demonstrates a practical use case for **zk-rollup scaling**.
+
+---
+
+## ⚙️ How It Works
+
+1. Users deposit **0.01 cBTC** into the contract to enter.
+2. Once 100 entries are received, the pool is locked.
+3. Chainlink VRF is triggered to select a **random winner**.
+4. Winner receives the **entire prize pool** (1 cBTC, minus protocol fees if applicable).
+
+---
+
+## 📦 Installation (Coming Soon)
 
 ```bash
-npm run dev
-# or
+git clone https://github.com/your-org/bitluck.git
+cd bitluck
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

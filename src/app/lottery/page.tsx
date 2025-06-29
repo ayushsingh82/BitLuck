@@ -14,7 +14,7 @@ interface Participant {
 interface RoundInfo {
   roundId: number;
   requiredDeposit: number;
-  prizePool: number;
+  totalDeposits: number;
   timeLeft: string;
   ticketsNeeded: number;
   totalParticipants: number;
@@ -25,7 +25,7 @@ export default function LotteryPage() {
   const [roundInfo, setRoundInfo] = useState<RoundInfo>({
     roundId: 42,
     requiredDeposit: 0.01,
-    prizePool: 0.67,
+    totalDeposits: 0.67,
     timeLeft: '2h 13m',
     ticketsNeeded: 33,
     totalParticipants: 67,
@@ -107,8 +107,8 @@ export default function LotteryPage() {
                     <span className="font-bold text-black">{roundInfo.requiredDeposit} cBTC</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-gray-600">Prize Pool:</span>
-                    <span className="font-bold text-green-600">{roundInfo.prizePool} cBTC</span>
+                    <span className="text-gray-600">Total Deposits:</span>
+                    <span className="font-bold text-green-600">{roundInfo.totalDeposits} cBTC</span>
                   </div>
                 </div>
                 <div className="space-y-4">
