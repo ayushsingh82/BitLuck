@@ -66,6 +66,7 @@ export default function LotteryPage() {
   const [vrfStatus, setVrfStatus] = useState<'idle' | 'requesting' | 'completed'>('idle');
   const [depositAddress] = useState('0x742d35Cc6634C0532925a3b8D4C9db96C4b4d8b6');
   const [copied, setCopied] = useState(false);
+  const [depositing, setDepositing] = useState(false);
 
   const copyToClipboard = async () => {
     try {
@@ -74,6 +75,43 @@ export default function LotteryPage() {
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error('Failed to copy: ', err);
+    }
+  };
+
+  const handleDeposit = async () => {
+    setDepositing(true);
+    try {
+      // Check if MetaMask is installed
+      if (typeof window !== 'undefined' && window.ethereum) {
+        // Request account access
+        const accounts = await window.ethereum.request({
+          method: 'eth_requestAccounts',
+        });
+        
+        if (accounts.length > 0) {
+          // Send transaction
+          const transactionParameters = {
+            to: depositAddress,
+            from: accounts[0],
+            value: '0x2386f26fc10000', // 0.01 ETH in hex (assuming 1 ETH = 1 cBTC for demo)
+          };
+
+          const txHash = await window.ethereum.request({
+            method: 'eth_sendTransaction',
+            params: [transactionParameters],
+          });
+
+          console.log('Transaction sent:', txHash);
+          alert('Deposit transaction sent! Check your wallet for confirmation.');
+        }
+      } else {
+        alert('Please install MetaMask or another wallet to make deposits.');
+      }
+    } catch (error) {
+      console.error('Deposit failed:', error);
+      alert('Deposit failed. Please try again.');
+    } finally {
+      setDepositing(false);
     }
   };
 
@@ -160,9 +198,27 @@ export default function LotteryPage() {
                     {copied ? '✅ Copied!' : '📋 Copy'}
                   </button>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-gray-600 mb-6">
                   Send exactly {roundInfo.requiredDeposit} cBTC to this address to enter the lottery
                 </p>
+                
+                {/* Deposit Button */}
+                <div className="space-y-3">
+                  <button
+                    onClick={handleDeposit}
+                    disabled={depositing}
+                    className={`w-full py-3 px-6 rounded-lg font-semibold transition-all duration-300 ${
+                      depositing
+                        ? 'bg-gray-400 cursor-not-allowed'
+                        : 'bg-gradient-to-r from-[#FFCF40] to-[#FE850B] text-black hover:from-[#FE850B] hover:to-[#FC3B02] shadow-lg'
+                    }`}
+                  >
+                    {depositing ? '⏳ Processing...' : '💰 Deposit 0.01 cBTC'}
+                  </button>
+                  <p className="text-xs text-gray-500">
+                    Click to send {roundInfo.requiredDeposit} cBTC directly from your wallet
+                  </p>
+                </div>
               </div>
             </div>
 

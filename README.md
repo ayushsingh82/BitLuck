@@ -25,7 +25,7 @@ BitLuck provides a fun, simple, and low-risk way for Bitcoin holders to engage w
 1. Users deposit **0.01 cBTC** into the contract to enter.
 2. Once 100 entries are received, the pool is locked.
 3. Chainlink VRF is triggered to select a **random winner**.
-4. Winner receives the **entire prize pool** (1 cBTC, minus protocol fees if applicable).
+4. Winner receives the **entire prize pool** .
 
 ---
 
