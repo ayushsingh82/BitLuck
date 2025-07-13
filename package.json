@@ -1,12 +1,25 @@
 {
-  "name": "my-app",
+  "name": "bitluck-lottery",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy.ts --network hardhat",
+    "deploy:citrea-testnet": "hardhat run scripts/deploy.ts --network citreaTestnet",
+    "deploy:citrea-mainnet": "hardhat run scripts/deploy.ts --network citreaMainnet",
+    "deploy:mumbai": "hardhat run scripts/deploy.ts --network mumbai",
+    "verify:citrea-testnet": "hardhat run scripts/verify.ts --network citreaTestnet",
+    "verify:citrea-mainnet": "hardhat run scripts/verify.ts --network citreaMainnet",
+    "verify:mumbai": "hardhat run scripts/verify.ts --network mumbai",
+    "node": "hardhat node",
+    "clean": "hardhat clean",
+    "coverage": "hardhat coverage",
+    "gas-report": "REPORT_GAS=true hardhat test"
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.2.8",
@@ -27,6 +40,13 @@
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@nomicfoundation/hardhat-verify": "^2.0.0",
+    "@openzeppelin/contracts": "^5.0.0",
+    "@chainlink/contracts": "^0.8.0",
+    "hardhat": "^2.19.0",
+    "dotenv": "^16.3.0",
+    "solidity-coverage": "^0.8.5"
   }
 }
